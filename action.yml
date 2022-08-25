@@ -25,6 +25,16 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: Set permissions on the script files
+      env:
+        ENV_SCRIPT: ${{ github.workspace }}/.github/workflows/${{ inputs.script }}
+      run: |
+        chmod 777 "${GITHUB_ACTION_PATH}/src/init.sh"
+        chmod 777 "${GITHUB_ACTION_PATH}/src/snapshot.sh"
+        chmod 777 "${GITHUB_ACTION_PATH}/src/cache_files.sh"
+        chmod 777 "${ENV_SCRIPT}"
+      shell: bash
+
     - env:
         ENV_IS_CACHED: ${{ inputs.is_cached }}
         ENV_RUNNER_TEMP: ${{ runner.temp }}
