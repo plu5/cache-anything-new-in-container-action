@@ -1,11 +1,11 @@
-name: 'Cache Anything New'
-author: 'Israel Roldan <israel.alberto.rv@gmail.com>'
+name: 'Cache Anything New in Container'
+author: 'Israel Roldan <israel.alberto.rv@gmail.com> and plu5'
 description: >-
-  Catch a series of commands then it will check for the new files generated and it should cache those.
+  This GitHub action scans the container to check if anything new was added after you run a script, then caches all new files.
 
 inputs:
   script:
-    description: 'Create your bash script to execute the commands. They will be generated files and it will stored in the cached.'
+    description: 'Your script. It needs to be in the same directory as your action; .github/workflows/.'
     required: true
   is_cached:
     description: 'Boolean value to check if the cache was created.'
@@ -14,11 +14,11 @@ inputs:
     description: 'directory where the new detected files will be stored. It should be the same as the `actions/cache` `path`.'
     required: true
   snapshot:
-    description: 'The path of the scanner entry point, recommended the main path (/).'
+    description: 'The path of the scanner entry point.'
     required: false
     default: '/'
   exclude:
-    description: 'Exclude directories or files during the scanner. Separate with spaces ( ).'
+    description: 'Exclude directories or files that don’t need to be cached. Separate with spaces.'
     required: false
     default: '/boot /data /dev /mnt /proc /run /sys'
 
