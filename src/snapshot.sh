@@ -16,7 +16,7 @@ echo "Parameter #1:       ${1}"
 
 FIND_INIT="sudo find"
 FIND_INIT="${FIND_INIT} ${ENV_SNAPSHOT}"
-FIND_INIT="${FIND_INIT} -type f,l"
+FIND_INIT="${FIND_INIT} \( -type f -o -type l \)"
 EXCLUDED=("${ENV_EXCLUDE}")
 
 FIND_EXCLUDE=" -not \( -path \"${ENV_RUNNER_TEMP}*\" -prune \)"
